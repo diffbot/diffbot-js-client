@@ -1,0 +1,48 @@
+<html>
+<head>
+    <script type="text/javascript" src="diffbot.js"></script>
+</head>
+<body>
+    <div id="content"></div>
+    <script type="text/javascript">
+        var diffBot = new DiffBot("2f92cd4ff64a273b2a51cd18a4be5197");
+
+        diffBot.analyze.get({
+            url: "http://www.xconomy.com/san-francisco/2012/07/25/diffbot-is-using-computer-vision-to-reinvent-the-semantic-web/"
+        }, function (response) {
+            var element = document.getElementById("content");
+            for (var i in response) {
+                element.innerHTML += "<p>" + i + " = " + response[i] + "</p>";
+            }
+        });
+
+        /*
+        diffBot.frontpage.get({
+            url: "http://www.xconomy.com/san-francisco/2012/07/25/diffbot-is-using-computer-vision-to-reinvent-the-semantic-web/"
+        }, function (response) {
+            for (var i in response) {
+                document.write("<p>" + i + " = " + response[i] + "</p>");
+            }
+        });
+
+        diffBot.product.get({
+            url: "http://www.xconomy.com/san-francisco/2012/07/25/diffbot-is-using-computer-vision-to-reinvent-the-semantic-web/"
+        }, function (response) {
+            for (var i in response) {
+                document.write("<p>" + i + " = " + response[i] + "</p>");
+            }
+        });
+
+
+        diffBot.image.get({
+            url: "http://www.xconomy.com/san-francisco/2012/07/25/diffbot-is-using-computer-vision-to-reinvent-the-semantic-web/"
+        }, function (response) {
+            for (var i in response) {
+                document.write("<p>" + i + " = " + response[i] + "</p>");
+            }
+        });
+
+        */
+    </script>
+</body>
+</html>
