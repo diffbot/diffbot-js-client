@@ -5,41 +5,109 @@
 <body>
     <div id="content"></div>
     <script type="text/javascript">
-        var diffBot = new DiffBot("2f92cd4ff64a273b2a51cd18a4be5197");
 
-        diffBot.analyze.get({
+    var client = new Diffbot("DIFFBOT TOKEN")
+
+
+     client.article.get({
             url: "http://www.xconomy.com/san-francisco/2012/07/25/diffbot-is-using-computer-vision-to-reinvent-the-semantic-web/"
-        }, function (response) {
+        }, function onSuccess(response) {
+            // output the title
             var element = document.getElementById("content");
-            for (var i in response) {
-                element.innerHTML += "<p>" + i + " = " + response[i] + "</p>";
-            }
+            element.innerHTML = response["objects"][0]["title"];
+        }, function onError(response) {
+              switch(response.errorCode) {
+                case 401:
+                    alert(response.error)
+                    break;
+                case 404:
+                    alert(response.error)
+                    break;
+                case 500:
+                    alert(response.error)
+                    break;
+              }
         });
 
         /*
-        diffBot.frontpage.get({
+     client.analyze.get({
             url: "http://www.xconomy.com/san-francisco/2012/07/25/diffbot-is-using-computer-vision-to-reinvent-the-semantic-web/"
-        }, function (response) {
-            for (var i in response) {
-                document.write("<p>" + i + " = " + response[i] + "</p>");
-            }
+        }, function onSuccess(response) {
+            // output the title
+            var element = document.getElementById("content");
+            element.innerHTML = response["type"];
+        }, function onError(response) {
+              switch(response.errorCode) {
+                case 401:
+                    alert(response.error)
+                    break;
+                case 404:
+                    alert(response.error)
+                    break;
+                case 500:
+                    alert(response.error)
+                    break;
+              }
         });
 
-        diffBot.product.get({
+     client.discussion.get({
             url: "http://www.xconomy.com/san-francisco/2012/07/25/diffbot-is-using-computer-vision-to-reinvent-the-semantic-web/"
-        }, function (response) {
-            for (var i in response) {
-                document.write("<p>" + i + " = " + response[i] + "</p>");
-            }
+        }, function onSuccess(response) {
+            // output the title
+            var element = document.getElementById("content");
+            element.innerHTML = response["objects"][0]["title"];
+        }, function onError(response) {
+              switch(response.errorCode) {
+                case 401:
+                    alert(response.error)
+                    break;
+                case 404:
+                    alert(response.error)
+                    break;
+                case 500:
+                    alert(response.error)
+                    break;
+              }
         });
 
-
-        diffBot.image.get({
+     client.image.get({
             url: "http://www.xconomy.com/san-francisco/2012/07/25/diffbot-is-using-computer-vision-to-reinvent-the-semantic-web/"
-        }, function (response) {
-            for (var i in response) {
-                document.write("<p>" + i + " = " + response[i] + "</p>");
-            }
+        }, function onSuccess(response) {
+            // output the image url
+            var element = document.getElementById("content");
+            element.innerHTML = response["objects"][0]["url"];
+        }, function onError(response) {
+              switch(response.errorCode) {
+                case 401:
+                    alert(response.error)
+                    break;
+                case 404:
+                    alert(response.error)
+                    break;
+                case 500:
+                    alert(response.error)
+                    break;
+              }
+        });
+
+     client.video.get({
+            url: "http://www.xconomy.com/san-francisco/2012/07/25/diffbot-is-using-computer-vision-to-reinvent-the-semantic-web/"
+        }, function onSuccess(response) {
+            // output the title
+            var element = document.getElementById("content");
+            element.innerHTML = response["objects"][0]["title"];
+        }, function onError(response) {
+              switch(response.errorCode) {
+                case 401:
+                    alert(response.error)
+                    break;
+                case 404:
+                    alert(response.error)
+                    break;
+                case 500:
+                    alert(response.error)
+                    break;
+              }
         });
 
         */

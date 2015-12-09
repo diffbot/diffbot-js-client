@@ -1,15 +1,16 @@
 ﻿/*
-DiffBot v1.0
+Diffbot v1.1
 Author: Craig Cooke
+Updated: John Davi
 */
 
 /**
-Constructor: Create an instance of the DiffBot class.
+Constructor: Create an instance of the Diffbot class.
 Parameters:
-@token: Your DiffBot API token
+@token: Your Diffbot API token
 **/
-DiffBot = function (token) {
-    var apiUri = "http://api.diffbot.com/v2/"; // Base url for all requests
+Diffbot = function (token) {
+    var apiUri = "http://api.diffbot.com/v3/"; // Base url for all requests
 
     // Utility to wrap private helper functions
     var utility = {
@@ -70,24 +71,24 @@ DiffBot = function (token) {
             }
         },
         /*
-          Call the Frontpage API
+          Call the Discussion API
           params:
               @args: An object containing parameters to supply with the API call
               @onSuccess: A callback function which is invoked as a result of a successful lookup. Signature: onSuccess(response);
               @onError: A callback function which is invoked as a result of an error occuring during a lookup: Signature: onError(response);
         */
-        frontpage: {
+        discussion: {
             extract: function extract(args, onSuccess, onError) {
                 // Define default arguments which will be overridden by properties defined in args
                 var arguments = utility.extend({
                     url: null,
-                    timeout: 15000
+                    fields: "*"
                 }, args);
 
                 arguments.format = "json"; // only support JSON?
 
                 // Make the API call
-                utility.callAPI("frontpage", arguments, onSuccess, onError);
+                utility.callAPI("discussion", arguments, onSuccess, onError);
             }
         },
         /*
@@ -103,7 +104,6 @@ DiffBot = function (token) {
                 var arguments = utility.extend({
                     url: null,
                     fields: "*",
-                    timeout: 15000
                 }, args);
 
                 // Make the API call
@@ -122,12 +122,30 @@ DiffBot = function (token) {
                 // Define default arguments which will be overridden by properties defined in args
                 var arguments = utility.extend({
                     url: null,
-                    fields: "*",
-                    timeout: 15000
+                    fields: "*"
                 }, args);
 
                 // Make the API call
                 utility.callAPI("image", arguments, onSuccess, onError);
+            }
+        },
+        /*
+          Call the Video API
+          params:
+              @args: An object containing parameters to supply with the API call
+              @onSuccess: A callback function which is invoked as a result of a successful lookup. Signature: onSuccess(response);
+              @onError: A callback function which is invoked as a result of an error occuring during a lookup: Signature: onError(response);
+        */
+        video: {
+            get: function get(args, onSuccess, onError) {
+                // Define default arguments which will be overridden by properties defined in args
+                var arguments = utility.extend({
+                    url: null,
+                    fields: "*"
+                }, args);
+
+                // Make the API call
+                utility.callAPI("video", arguments, onSuccess, onError);
             }
         },
         /*
@@ -137,6 +155,7 @@ DiffBot = function (token) {
               @onSuccess: A callback function which is invoked as a result of a successful lookup. Signature: onSuccess(response);
               @onError: A callback function which is invoked as a result of an error occuring during a lookup: Signature: onError(response);
         */
+
         analyze: {
             get: function get(args, onSuccess, onError) {
                 // Define default arguments which will be overridden by properties defined in args
@@ -565,373 +584,3 @@ var JSONP = (function (document) {
         callbacks: callbacks
     };
 })(document);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
