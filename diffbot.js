@@ -10,7 +10,7 @@ Parameters:
 @token: Your Diffbot API token
 **/
 Diffbot = function (token) {
-    var apiUri = "http://api.diffbot.com/v3/"; // Base url for all requests
+    var apiUri = "https://api.diffbot.com/v3/"; // Base url for all requests
 
     // Utility to wrap private helper functions
     var utility = {
